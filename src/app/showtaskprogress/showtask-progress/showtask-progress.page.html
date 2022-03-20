@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>รายการงานขนส่งที่ดำเนินการอยู่ </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-searchbar></ion-searchbar>
+<ion-content>
+  <div *ngFor="let x of announcement">
+    <ion-card class="group-box">
+      <div>
+        {{x.announcementTitle}}
+      </div>
+      <div>
+        <div *ngIf="!x.showMore">
+          {{trimString(x.announcementDetails,100)}}
+        </div>
+        <div *ngIf="x.showMore">
+          {{x.announcementDetails}}
+        </div>
+        <a (click)="x.showMore = !x.showMore">Show <span [innerHtml]="x.showMore ? 'less' : 'More'"> </span>
+        </a>
+      </div>
+      <ion-row>
+      <ion-button (click)="addPhotoToGallery()">
+        <ion-icon name="camera-outline"></ion-icon>
+      </ion-button>
+      <ion-button (click)="pageMap()">
+        <ion-icon name="navigate-circle-outline"></ion-icon>
+      </ion-button>
+      <ion-button (click)="pageMap()">
+        <ion-icon name="qr-code-outline"></ion-icon>
+      </ion-button>
+      <ion-button (click)="pageBooked()">
+        <ion-icon name="checkmark-done-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-row>
+    </ion-card>
+  </div>
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+    <ion-fab-button (click)="addPhotoToGallery()">
+      <ion-icon name="camera"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
+
