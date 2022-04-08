@@ -5,6 +5,7 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgxQRCodeModule } from 'ngx-qrcode2';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { NgxQRCodeModule } from 'ngx-qrcode2';
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    NgxQRCodeModule
+    NgxQRCodeModule,
+    HttpClientModule
   ],
   providers: [
     { provide: RouteReuseStrategy,

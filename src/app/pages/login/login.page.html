@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>TMS App</ion-title>
+  </ion-toolbar>
+</ion-header>
+ 
+<ion-content>
+ 
+  <form (ngSubmit)="login()" [formGroup]="credentials">
+    <div class="input-group">
+      <ion-item>
+        <ion-input type="text" placeholder="รหัสพนักงาน" formControlName="employeeNo"></ion-input>
+      </ion-item>
+      <div *ngIf="(employeeNo.dirty || employeeNo.touched) && employeeNo.errors" class="errors">
+        <span *ngIf="employeeNo.errors?.required">กรุณากรอกรหัสพนักงาน</span>
+      </div>
+      <ion-item>
+        <ion-input type="password" placeholder="รหัสผ่าน" formControlName="password"></ion-input>
+      </ion-item>
+      <div *ngIf="(password.dirty || password.touched) && password.errors" class="errors">
+        <span *ngIf="password.errors?.required">กรุณากรอกรหัสผ่าน</span>
+      </div>
+    </div>
+ 
+    <ion-button type="submit" expand="block" [disabled]="!credentials.valid">Log in</ion-button>
+   
+  </form>
+</ion-content>

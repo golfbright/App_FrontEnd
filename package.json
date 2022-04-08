@@ -27,7 +27,7 @@
     "@capacitor/haptics": "1.1.4",
     "@capacitor/keyboard": "1.2.1",
     "@capacitor/status-bar": "1.0.7",
-    "@capacitor/storage": "^1.2.4",
+    "@capacitor/storage": "^1.2.5",
     "@ionic-native/barcode-scanner": "^4.20.0",
     "@ionic-native/core": "^5.36.0",
     "@ionic-native/qr-scanner": "^4.20.0",
