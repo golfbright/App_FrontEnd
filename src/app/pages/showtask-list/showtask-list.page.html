@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>รายการงานขนส่ง</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="reload($event)">
+    <ion-refresher-content
+      pullingIcon="chevron-down-circle-outline"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <div *ngFor="let x of taskList">
+    <ion-card class="group-box">
+      <div>
+       รหัสงาน : {{x.taskNumber}}
+      </div>
+      <div>
+        <div *ngIf="!x.showMore">
+         รายละเอียดงาน : {{trimString(x.taskDetail,100)}}
+        </div>
+        <div *ngIf="x.showMore">
+          รายละเอียดงาน : {{x.taskDetail}}
+          <br>
+          เวลาทำงาน : {{x.taskStartDate}} - {{x.taskFinishDate}}
+          <br>
+          สถานที่จัดส่ง : {{x.namePlace}} {{x.addressNumber}} ถนน {{x.street}} ตำบล {{x.country}} อำเภอ {{x.district}} {{x.province}} {{x.zipCode}}
+          <br>
+          รายละเอียดรถ : {{x.vehicleBrand}} {{x.vehicleType}} ทะเบียน {{x.vehiclePlate}}
+        </div>
+        <a (click)="x.showMore = !x.showMore"> <span [innerHtml]="x.showMore ? 'ย่อ' : 'แสดงรายละเอียดทั้งหมด'"> </span>
+        </a>
+      </div>
+      <!-- <div text-right class="announcement-username">
+        {{x.createrName}}
+      </div> -->
+      <ion-row style="display: flex;  justify-content: right;">
+      
+      <ion-button (click)="pageMap()">
+        <ion-icon name="navigate-circle-outline"></ion-icon>
+      </ion-button>
+      <ion-button (click)="pageBooked(x)">
+        <ion-icon name="archive-outline"></ion-icon>
+      </ion-button>
+    </ion-row>
+    </ion-card>
+  </div>
+</ion-content>

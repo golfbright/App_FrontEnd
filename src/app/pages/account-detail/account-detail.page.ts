@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AccountService } from 'src/app/services/account.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { SetBaseUrlForApi } from 'src/app/SetBaseUrlForApi';
 
@@ -12,7 +13,9 @@ export class AccountDetailPage implements OnInit {
   accountData: any;
   url: any;
   roleName: string = "";
-  constructor(private router: Router, private authService: AuthenticationService) {
+  activeStatus: boolean ;
+
+  constructor(private router: Router,private accountService: AccountService, private authService: AuthenticationService) {
     this.accountData = authService.isLoggedIn();
     this.url = SetBaseUrlForApi.baseUrl + this.accountData.imageProfilePath;
     console.log(this.accountData,this.accountData.accountRoles.length);
@@ -26,6 +29,13 @@ export class AccountDetailPage implements OnInit {
       }
 
     }
+
+    if(this.accountData.status == "Active"){
+      this.activeStatus = true;
+    }
+    else{
+      this.activeStatus = false;
+    }
   }
 
   ngOnInit() {
@@ -36,8 +46,27 @@ export class AccountDetailPage implements OnInit {
     return this.url;
   }
 
+  activeChange(){
+    if(this.activeStatus == true)
+    {
+      this.accountData.status = "Active";
+    }
+    else
+    {
+      this.accountData.status = "Not-Active";
+    }
+
+    this.accountService.addAccount(this.accountData).subscribe(
+      (res) => {
+        console.log(res);
+      }, (error) => {
+      });
+  }
+
   async logout() {
     this.router.navigate(['/login']);
     localStorage.clear();
   }
+
+
 }

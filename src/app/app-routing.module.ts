@@ -10,23 +10,23 @@ const routes: Routes = [
   },
   {
     path: 'account-detail',
-    loadChildren: () => import('./accountdetail/account-detail/account-detail.module').then( m => m.AccountDetailPageModule)
+    loadChildren: () => import('./pages/account-detail/account-detail.module').then( m => m.AccountDetailPageModule)
   },
   {
     path: 'showtask-list',
-    loadChildren: () => import('./showtasklist/showtask-list/showtask-list.module').then( m => m.ShowtaskListPageModule)
+    loadChildren: () => import('./pages/showtask-list/showtask-list.module').then( m => m.ShowtaskListPageModule)
   },
   {
     path: 'showtask-complete',
-    loadChildren: () => import('./showtaskcomplete/showtask-complete/showtask-complete.module').then( m => m.ShowtaskCompletePageModule)
+    loadChildren: () => import('./pages/showtask-complete/showtask-complete.module').then( m => m.ShowtaskCompletePageModule)
   },
   {
     path: 'showtask-progress',
-    loadChildren: () => import('./showtaskprogress/showtask-progress/showtask-progress.module').then( m => m.ShowtaskProgressPageModule)
+    loadChildren: () => import('./pages/showtask-progress/showtask-progress.module').then( m => m.ShowtaskProgressPageModule)
   },
   {
     path: 'showtask-booked',
-    loadChildren: () => import('./showtaskbooked/showtask-booked/showtask-booked.module').then( m => m.ShowtaskBookedPageModule)
+    loadChildren: () => import('./pages/showtask-booked/showtask-booked.module').then( m => m.ShowtaskBookedPageModule)
   },
   {
     path: 'qrcode',

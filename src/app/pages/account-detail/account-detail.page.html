@@ -1,0 +1,39 @@
+<ion-content>
+
+
+  <ion-content class="home">
+
+
+
+    <div class="list">
+      
+        <div class="top">
+          <br>
+          <div class="profile-picture big-profile-picture">
+            <img [src]="showImgPath()" id="img" />
+
+          </div>
+
+          
+        </div>
+        <div class="profile-name">
+          <p>ชื่อ： {{accountData.firstName}} {{accountData.lastName}}</p>
+          <p>เบอร์โทรศัพท์มือถือ：{{accountData.tel}}</p>
+          <p>เลขประจำตัวประชาชน：{{accountData.cardId}}</p>
+          <p>เลขที่ใบขับขี：{{accountData.driverLicense}}</p>
+          <p>ตำแหน่ง：{{roleName}}</p>
+          
+          <br>
+
+
+        </div>
+     
+    </div>
+    <ion-item>
+      <ion-label>Active</ion-label>
+      <ion-toggle slot="start"  name="Active" [(ngModel)]="activeStatus" (ngModelChange)="activeChange()" color="success" checked></ion-toggle>
+    </ion-item>
+
+
+    <ion-button expand="full" (click)="logout()">Logout</ion-button>
+  </ion-content>
