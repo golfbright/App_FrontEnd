@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
+import { AuthenticationService } from 'src/app/services/authentication.service';
+import { TaskTransportService } from 'src/app/services/task-transport.service';
 
 @Component({
   selector: 'app-showtask-booked',
@@ -7,27 +10,21 @@ import { Router } from '@angular/router';
   styleUrls: ['./showtask-booked.page.scss'],
 })
 export class ShowtaskBookedPage implements OnInit {
-  announcement = [
-    {
-      announcementTitle: "Test1",
-      announcementDetails:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
-    },
-    {
-      announcementTitle: "Test2",
-      announcementDetails:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
-    }
-  ];
+  taskList :any;
+  accountData:any;
 
-  constructor(private route: Router) {
-    this.announcement = this.announcement.map(item => ({
-      ...item,
-      showMore: false
-    }));
+  constructor(private route: Router,private taskTransportService: TaskTransportService,private alertController: AlertController,private authService: AuthenticationService) {
+    this.accountData = this.authService.isLoggedIn();
+        console.log(this.accountData.id);
    }
 
   ngOnInit() {
+    
+    this.taskTransportService.getTransportBooked(this.accountData.id).subscribe((res: any)=>{
+      console.log(res);
+      this.taskList = res;
+    })
+
   }
   trimString(string, length) {
     return string.length > length
@@ -35,9 +32,15 @@ export class ShowtaskBookedPage implements OnInit {
       : string;
   }
 
-  pageBooked(){
-    this.route.navigate(['showtask-booked']);
-  }
   pageMap(){
+  }
+
+  reload(event){
+
+    this.ngOnInit();
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      event.target.complete();
+    }, 1000);
   }
 }

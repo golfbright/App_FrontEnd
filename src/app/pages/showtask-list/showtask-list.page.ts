@@ -39,6 +39,7 @@ export class ShowtaskListPage implements OnInit {
         const accountData = this.authService.isLoggedIn();
         console.log(accountData.id);
         task.accountId = accountData.id;
+        task.taskStatus = "ได้รับการจอง";
         this.taskTransportService.addTransport(task).subscribe(
           async (res) => {
             console.log(res);
@@ -89,6 +90,6 @@ export class ShowtaskListPage implements OnInit {
     setTimeout(() => {
       console.log('Async operation has ended');
       event.target.complete();
-    }, 2000);
+    }, 1000);
   }
 }

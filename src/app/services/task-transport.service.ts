@@ -11,6 +11,9 @@ export class TaskTransportService {
   getTransport() {
     return this.http.get(this.url + "tasklist");
   }
+  getTransportBooked(accountId:number) {
+    return this.http.get(this.url + "tasklist/" + accountId);
+  }
   getTransportById(id: number) {
     return this.http.get(this.url + id);
   }
