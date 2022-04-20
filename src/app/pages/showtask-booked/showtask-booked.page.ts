@@ -19,7 +19,7 @@ export class ShowtaskBookedPage implements OnInit {
    }
 
   ngOnInit() {
-    
+
     this.taskTransportService.getTransportBooked(this.accountData.id).subscribe((res: any)=>{
       console.log(res);
       this.taskList = res;
@@ -34,7 +34,7 @@ export class ShowtaskBookedPage implements OnInit {
   }
 
   pageMap(){
-    
+    this.route.navigate(['googlemap']);
   }
 
   reload(event){
