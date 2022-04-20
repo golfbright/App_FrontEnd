@@ -39,5 +39,8 @@ export class AccountService {
   loginChk(employeeNo,password){
     return this.http.get(this.url + "login/" + employeeNo + "/" + password);
   }
+  getAccountActive(){
+    return this.http.get(this.url + "activeAccount");
+  }
   
 }

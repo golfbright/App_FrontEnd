@@ -66,6 +66,8 @@ export class AccountDetailPage implements OnInit {
   async logout() {
     this.router.navigate(['/login']);
     localStorage.clear();
+    window.location.reload();
+    // window.location.assign('/');
   }
 
 

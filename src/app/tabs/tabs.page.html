@@ -1,8 +1,24 @@
-<ion-tabs>
+<ion-content padding *ngIf="switchMode">
+
+<h1 class="nom"> เลือกโหมดเข้าใช้งาน </h1>
+<p class="titre"> บัญชีผู้ใช้ของคุณมีบทบาททั้งพนักงงานขับรถและพนักงานปล่อยรถ กรุณาเลือก</p>
+
+  <ion-row>
+    <ion-col  width-50 style="text-align: right">
+      <ion-button (click)="switchToDriver()">พนักงานขับรถ</ion-button>
+    </ion-col>
+    <ion-col width-50 style="text-align: left">
+      <ion-button (click)="switchToCarDealer()">พนักงานปล่อยรถ</ion-button>
+    </ion-col>
+  </ion-row>
+</ion-content>
+
+
+
+
+<ion-tabs *ngIf="roleType === 1">
 
   <ion-tab-bar slot="bottom">
-
-
     <ion-tab-button tab="showtask-list">
       <ion-icon name="file-tray-full-outline"></ion-icon>
       <ion-label>จองงาน</ion-label>
@@ -25,19 +41,37 @@
       <ion-label>บัญชีผู้ใช้</ion-label>
     </ion-tab-button>
 
-    <!-- <ion-tab-button tab="qrcode">
-      <ion-icon name="qr-code-outline"></ion-icon>
+  </ion-tab-bar>
+</ion-tabs>
 
+
+<ion-tabs *ngIf="roleType === 2">
+
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="showtask-list-cardealer">
+      <ion-icon name="file-tray-full-outline"></ion-icon>
+      <ion-label>งาน</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="camera">
-      <ion-icon name="camera-outline"></ion-icon>
+    <ion-tab-button tab="showtask-booked-cardealer">
+      <ion-icon name="archive-outline"></ion-icon>
+      <ion-label>งานจองแล้ว</ion-label>
+    </ion-tab-button>
 
-    </ion-tab-button> -->
+    <ion-tab-button tab="showtask-progress-cardealer">
+      <ion-icon name="car-outline"></ion-icon>
+      <ion-label>กำลังขนส่ง</ion-label>
+    </ion-tab-button>
+    
+    <ion-tab-button tab="showtask-complete-cardealer">
+      <ion-icon name="checkmark-circle-outline"></ion-icon>
+      <ion-label>เสร็จสิ้น</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="account-detail">
+      <ion-icon name="person-outline"></ion-icon>
+      <ion-label>บัญชีผู้ใช้</ion-label>
+    </ion-tab-button>
 
   </ion-tab-bar>
-
-
-
-
 </ion-tabs>

@@ -26,6 +26,7 @@ export class ShowtaskBookedPage implements OnInit {
     })
 
   }
+
   trimString(string, length) {
     return string.length > length
       ? string.substring(0, length) + "..."
@@ -33,6 +34,7 @@ export class ShowtaskBookedPage implements OnInit {
   }
 
   pageMap(){
+    
   }
 
   reload(event){

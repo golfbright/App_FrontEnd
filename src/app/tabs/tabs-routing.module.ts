@@ -36,6 +36,24 @@ const routes: Routes = [
         loadChildren:()=> import('../camera/camera-routing.module').then(m=>m.CameraPageRoutingModule)
       },
       {
+        path: 'showtask-list-cardealer',
+        loadChildren:()=> import('../pages/showtask-list-cardealer/showtask-list-cardealer.module').then(m=>m.ShowtaskListCardealerPageModule)
+      },
+      {
+        path: 'showtask-progress-cardealer',
+        loadChildren:()=> import('../pages/showtask-progress-cardealer/showtask-progress-cardealer.module').then(m=>m.ShowtaskProgressCardealerPageModule)
+      },
+      {
+        path: 'showtask-booked-cardealer',
+        loadChildren:()=> import('../pages/showtask-booked-cardealer/showtask-booked-cardealer.module').then(m=>m.ShowtaskBookedCardealerPageModule)
+      },
+      {
+        path: 'showtask-complete-cardealer',
+        loadChildren:()=> import('../pages/showtask-complete-cardealer/showtask-complete-cardealer.module').then(m=>m.ShowtaskCompleteCardealerPageModule)
+      },
+
+      
+      {
         path: '',
         redirectTo: '/tabs/account-detail',
         pathMatch: 'full'

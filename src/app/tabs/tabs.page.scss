@@ -1,1 +1,28 @@
+ion-content {
+    text-align: center;
+    --padding-top: 40%;
+    --padding-start: 10%;
+    --padding-end: 10%;
+    
+}
 
+.example-center {
+    text-align: center;
+  }
+ 
+.input-group {
+    text-align: center;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+ 
+.errors {
+    font-size: small;
+    color: #fff;
+    background: var(--ion-color-danger);
+    padding-left: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
