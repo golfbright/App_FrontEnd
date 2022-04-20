@@ -13,11 +13,11 @@ export class ShowtaskListPage implements OnInit {
   taskList :any;
 
   constructor(private route: Router,private taskTransportService: TaskTransportService,private alertController: AlertController,private authService: AuthenticationService) {
-    
+
    }
 
   ngOnInit() {
-    
+
     this.taskTransportService.getTransport().subscribe((res: any)=>{
       console.log(res);
       this.taskList = res;
@@ -33,7 +33,7 @@ export class ShowtaskListPage implements OnInit {
   pageBooked(task){
     this.taskTransportService.getTransportById(task.id).subscribe(async (res: any)=>{
       console.log(res);
-      
+
       if(res[0].accountId == 0){
         console.log("res");
         const accountData = this.authService.isLoggedIn();
@@ -44,7 +44,7 @@ export class ShowtaskListPage implements OnInit {
           async (res) => {
             console.log(res);
             this.ngOnInit();
-            
+
             const alert = await this.alertController.create({
               header: 'ทำการจองสำเร็จ',
               message: 'คุณได้ทำการจองงานขนส่งนี้สามารถดูรายละเอียดได้ที่หน้างานของฉัน',
@@ -77,7 +77,13 @@ export class ShowtaskListPage implements OnInit {
     // this.route.navigate(['tabs/showtask-booked']);
   }
 
-  pageMap(){
+  pageMap(task){
+    this.taskTransportService.getTransportById(task.id).subscribe(async (res: any)=>{
+      res;
+      console.log(res);
+      console.log(task.gps);
+      this.route.navigate(['googlemap',{dataFormParam: task.gps}]);
+    });
   }
 
   reload(event){

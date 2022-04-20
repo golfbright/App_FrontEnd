@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 declare var google: any;
 @Component({
   selector: 'app-googlemap',
@@ -13,8 +13,8 @@ export class GooglemapPage implements OnInit {
   markers: any = [
     {
         title: "golf",
-        latitude: "13.724758692704158",
-        longitude: "100.46941045470452"
+        latitude: "13.670801910912122",
+        longitude: "100.47832390259774"
     },
     {
         title: "bright",
@@ -22,7 +22,11 @@ export class GooglemapPage implements OnInit {
         longitude: "100.48376757670309"
     }
   ];
-  constructor(private route: Router) { }
+  gps: any;
+  constructor(private route: Router,private routes: ActivatedRoute) {
+    this.routes.params.subscribe((params: Params) => this.gps = params['dataFormParam']);
+    console.log(this.gps);
+  }
 
   ngOnInit() {
   }
@@ -43,12 +47,12 @@ export class GooglemapPage implements OnInit {
 
   addMarkersToMap(markers){
     for (let marker of markers){
-      let position = new google.maps.LatLng(marker.latitude, marker.longitude);
+      let position = new google.maps.LatLng(this.gps);
       let mapMarker = new google.maps.Marker({
         position: position,
         title: marker.title,
-        latitude: marker.latitude,
-        longitude: marker.longitude
+        latitude: this.gps,
+        longitude: this.gps
       });
 
       mapMarker.setMap(this.map);
@@ -86,10 +90,6 @@ export class GooglemapPage implements OnInit {
     for(let window of this.infoWindows){
       window.close();
     }
-  }
-
-  callback(){
-    this.route.navigate(['tabs/showtask-progress']);
   }
 
 }

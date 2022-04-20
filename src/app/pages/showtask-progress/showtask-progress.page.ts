@@ -40,5 +40,9 @@ export class ShowtaskProgressPage implements OnInit {
     this.route.navigate(['showtask-booked']);
   }
   pageMap(){
+    this.route.navigate(['googlemap']);
+  }
+  pageQRcode(){
+    this.route.navigate(['qrcode']);
   }
 }
