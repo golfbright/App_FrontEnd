@@ -10,25 +10,20 @@ export class GooglemapPage implements OnInit {
   map: any;
   @ViewChild('map', {read: ElementRef, static: false}) mapRef: ElementRef;
   infoWindows: any = [];
-  markers: any = [
-    {
-        title: "golf",
-        latitude: "13.670801910912122",
-        longitude: "100.47832390259774"
-    },
-    {
-        title: "bright",
-        latitude: "13.726385857854075",
-        longitude: "100.48376757670309"
-    }
-  ];
-  gps: any;
+  markers: any = [];
+  gps: string;
+  split: any;
+  latitude: string;
+  longitude: string;
   constructor(private route: Router,private routes: ActivatedRoute) {
     this.routes.params.subscribe((params: Params) => this.gps = params['dataFormParam']);
-    console.log(this.gps);
   }
 
   ngOnInit() {
+    this.split = this.gps.split(",");
+    this.longitude = this.split[1].split(" ");
+    console.log(this.longitude[1]);
+    this.markers = [{title: "golf",latitude: this.split[0],longitude:this.longitude[1]}];
   }
   ionViewDidEnter(){
     this.showMap();
@@ -46,13 +41,16 @@ export class GooglemapPage implements OnInit {
   }
 
   addMarkersToMap(markers){
+    console.log (markers);
     for (let marker of markers){
-      let position = new google.maps.LatLng(this.gps);
+      console.log(marker.latitude);
+      console.log(marker.longitude);
+      let position = new google.maps.LatLng(marker.latitude,marker.longitude);
       let mapMarker = new google.maps.Marker({
         position: position,
         title: marker.title,
-        latitude: this.gps,
-        longitude: this.gps
+        latitude: marker.latitude,
+        longitude: marker.longitude
       });
 
       mapMarker.setMap(this.map);

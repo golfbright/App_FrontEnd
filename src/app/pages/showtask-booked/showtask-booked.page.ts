@@ -33,8 +33,17 @@ export class ShowtaskBookedPage implements OnInit {
       : string;
   }
 
-  pageMap(){
-    this.route.navigate(['googlemap']);
+  pageMap(task){
+    console.log(task);
+    this.route.navigate(['googlemap',{dataFormParam: task.gps}]);
+  }
+
+  pageQRcode(qrcode){
+    console.log(qrcode.taskNumber);
+    this.route.navigate(['qrcode',{dataFormParam: qrcode.taskNumber}]);
+  }
+  cancelled(tasklist){
+
   }
 
   reload(event){

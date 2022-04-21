@@ -78,12 +78,8 @@ export class ShowtaskListPage implements OnInit {
   }
 
   pageMap(task){
-    this.taskTransportService.getTransportById(task.id).subscribe(async (res: any)=>{
-      res;
-      console.log(res);
-      console.log(task.gps);
+    console.log(task.gps);
       this.route.navigate(['googlemap',{dataFormParam: task.gps}]);
-    });
   }
 
   reload(event){
