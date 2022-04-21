@@ -5,8 +5,9 @@ import { AuthGuard } from './guards/auth.guard';
 const routes: Routes = [
   {
     path: '',
-    canActivate: [AuthGuard],
-    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule),
+    // canActivate: [AuthGuard],
+    // loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule),
+    loadChildren: () => import('./qrcode-scan/qrcode-scan.module').then( m => m.QrcodeScanPageModule)
   },
   {
     path: 'account-detail',

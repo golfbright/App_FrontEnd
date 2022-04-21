@@ -14,6 +14,15 @@ export class TaskTransportService {
   getTransportBooked(accountId:number) {
     return this.http.get(this.url + "tasklist/" + accountId);
   }
+  getTransportBookedCarDealer() {
+    return this.http.get(this.url + "tasklistBooked");
+  }
+  getTransportProgressCarDealer() {
+    return this.http.get(this.url + "tasklisProgress");
+  }
+  getTransportProgress(accountId:number) {
+    return this.http.get(this.url + "tasklisProgress/" + accountId);
+  }
   getTransportById(id: number) {
     return this.http.get(this.url + id);
   }
@@ -50,6 +59,7 @@ export class TaskTransportService {
   {
     return this.http.get(this.url + "vehicle/" + data);
   }
+
 
   
 }

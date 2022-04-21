@@ -53,6 +53,8 @@ export class LoginPage implements OnInit {
               
         alert.present();
       }
+    }, (error) => {
+      alert("error");
     });
   }
  

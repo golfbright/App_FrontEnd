@@ -34,7 +34,9 @@ export class ShowtaskListCardealerPage implements OnInit {
     this.route.navigate(['active-driver-list',{taskId: task.id}]);
   }
 
-  pageMap(){
+  pageMap(task){
+    console.log(task.gps);
+      this.route.navigate(['googlemap',{dataFormParam: task.gps}]);
   }
 
   reload(event){

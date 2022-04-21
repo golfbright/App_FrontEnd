@@ -1,9 +1,63 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>showtask-progress-cardealer</ion-title>
+    <ion-title>รายการงานขนส่งทั้งหมดที่ดำเนินหารอยูู่</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="reload($event)">
+    <ion-refresher-content
+      pullingIcon="chevron-down-circle-outline"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <div *ngFor="let x of taskList">
+    <ion-card class="group-box">
+      <div>
+       รหัสงาน : {{x.taskNumber}} 
+       <br>
+       จองโดย : {{x.firstName}} {{x.lastName}}
+      </div>
+      <div>
+        <div *ngIf="!x.showMore">
+         รายละเอียดงาน : {{trimString(x.taskDetail,100)}}
+        </div>
+        <div *ngIf="x.showMore">
+          รายละเอียดงาน : {{x.taskDetail}}
+          <br>
+          เวลาทำงาน : {{x.taskStartDate}} - {{x.taskFinishDate}}
+          <br>
+          สถานที่จัดส่ง : {{x.namePlace}} {{x.addressNumber}} ถนน {{x.street}} ตำบล {{x.country}} อำเภอ {{x.district}} {{x.province}} {{x.zipCode}}
+          <br>
+          รายละเอียดรถ : {{x.vehicleBrand}} {{x.vehicleType}} ทะเบียน {{x.vehiclePlate}}
+        </div>
+        <a (click)="x.showMore = !x.showMore"> <span [innerHtml]="x.showMore ? 'ย่อ' : 'แสดงรายละเอียดทั้งหมด'"> </span>
+        </a>
+      </div>
+      <!-- <div text-right class="announcement-username">
+        {{x.createrName}}
+      </div> -->
+      <ion-row style="display: flex;  justify-content: right;">
+      
+        <ion-button (click)="pageMap(x)">
+          <ion-icon name="navigate-circle-outline"></ion-icon>
+          <ion-label>แผนที่</ion-label>
+        </ion-button>
+        <ion-button href="tel:{{x.tel}}">
+          <ion-icon name="call-outline"></ion-icon>
+          <ion-label>โทร</ion-label>
+        </ion-button>
+        <ion-button (click)="pageMap()">
+          <ion-icon name="close-outline"></ion-icon>
+          <ion-label>ยกเลิกจอง</ion-label>
+        </ion-button>
 
+    </ion-row>
+    </ion-card>
+  </div>
 </ion-content>
+
+
+

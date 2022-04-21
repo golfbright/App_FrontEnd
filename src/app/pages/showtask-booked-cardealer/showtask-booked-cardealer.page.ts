@@ -21,7 +21,7 @@ export class ShowtaskBookedCardealerPage implements OnInit {
 
   ngOnInit() {
     
-    this.taskTransportService.getTransportBooked(this.accountData.id).subscribe((res: any)=>{
+    this.taskTransportService.getTransportBookedCarDealer().subscribe((res: any)=>{
       console.log(res);
       this.taskList = res;
     })
@@ -34,9 +34,15 @@ export class ShowtaskBookedCardealerPage implements OnInit {
       : string;
   }
 
-  pageMap(){
-    
+  pageMap(task){
+    console.log(task.gps);
+      this.route.navigate(['googlemap',{dataFormParam: task.gps}]);
   }
+
+  qrcodeScan() {
+    this.route.navigate(['camera']);
+  }
+  
 
   reload(event){
 
