@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { NgxQRCodeModule } from 'ngx-qrcode2';
 import { HttpClientModule } from '@angular/common/http';
 
+
 @NgModule({
   declarations: [
     AppComponent
@@ -17,7 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
     IonicModule.forRoot(),
     AppRoutingModule,
     NgxQRCodeModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [
     { provide: RouteReuseStrategy,
@@ -25,5 +26,6 @@ import { HttpClientModule } from '@angular/common/http';
       ],
 
   bootstrap: [AppComponent],
+
 })
 export class AppModule {}
