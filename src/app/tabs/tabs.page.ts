@@ -19,7 +19,6 @@ export class TabsPage implements OnInit {
 
   constructor(private authService: AuthenticationService)
   {
-
   }
 
   ngOnInit(): void {
@@ -29,11 +28,8 @@ export class TabsPage implements OnInit {
 
      if(e.roleName == "Driver")
      {
-
-
       this.roleType = this.roleType + 1;
       localStorage.setItem('roleType',JSON.stringify(this.roleType));
-
      }
      else if(e.roleName == "Car Dealer")
      {
