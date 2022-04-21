@@ -64,6 +64,10 @@ const routes: Routes = [
     path: 'active-driver-list',
     loadChildren: () => import('./pages/active-driver-list/active-driver-list.module').then( m => m.ActiveDriverListPageModule)
   },
+  {
+    path: 'googlemap',
+    loadChildren: () => import('./pages/googlemap/googlemap.module').then( m => m.GooglemapPageModule)
+  },
   
 ];
 @NgModule({

@@ -1,9 +1,48 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>active-driver-list</ion-title>
+    <ion-title>รายชื่อพนักงานขับรถที่ Active</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
 
+
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="reload($event)">
+    <ion-refresher-content
+      pullingIcon="chevron-down-circle-outline"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <div *ngFor="let x of activeList">
+    <ion-card class="group-box">
+      <div>
+       ชื่อ : {{x.firstName}} {{x.lastName}}
+       <br>
+       รหัสงาน : {{x.employeeNo}}
+       <br>
+       
+      </div>
+
+      <div>
+        
+      </div>
+      <!-- <div text-right class="announcement-username">
+        {{x.createrName}}
+      </div> -->
+      <ion-row style="display: flex;  justify-content: right;">
+      
+      <ion-button href="tel:{{x.tel}}">
+        <ion-icon name="call-outline"></ion-icon>
+        <ion-label>โทร</ion-label>
+      </ion-button>
+      <ion-button (click)="pageBooked(x.id)">
+        <ion-icon name="archive-outline"></ion-icon>
+        <ion-label>จองงานขนส่ง</ion-label>
+      </ion-button>
+    </ion-row>
+    </ion-card>
+  </div>
 </ion-content>

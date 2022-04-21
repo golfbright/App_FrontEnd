@@ -39,14 +39,17 @@
       </div> -->
       <ion-row style="display: flex;  justify-content: right;">
       
-        <ion-button (click)="pageMap()">
+        <ion-button (click)="pageMap(x)">
           <ion-icon name="navigate-circle-outline"></ion-icon>
+          <ion-label>แผนที่</ion-label>
         </ion-button>
-        <ion-button (click)="pageMap()">
+        <ion-button (click)="pageQRcode(x)">
           <ion-icon name="qr-code-outline"></ion-icon>
+          <ion-label>QR Code เริ่มงาน</ion-label>
         </ion-button>
-        <ion-button (click)="pageMap()">
+        <ion-button (click)="cancelBook(x)">
           <ion-icon name="close-outline"></ion-icon>
+          <ion-label>ยกเลิกจอง</ion-label>
         </ion-button>
 
     </ion-row>

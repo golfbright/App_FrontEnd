@@ -77,7 +77,9 @@ export class ShowtaskListPage implements OnInit {
     // this.route.navigate(['tabs/showtask-booked']);
   }
 
-  pageMap(){
+  pageMap(task){
+    console.log(task.gps);
+      this.route.navigate(['googlemap',{dataFormParam: task.gps}]);
   }
 
   reload(event){

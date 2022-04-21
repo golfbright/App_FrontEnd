@@ -52,7 +52,7 @@ const routes: Routes = [
         loadChildren:()=> import('../pages/showtask-complete-cardealer/showtask-complete-cardealer.module').then(m=>m.ShowtaskCompleteCardealerPageModule)
       },
 
-      
+
       {
         path: '',
         redirectTo: '/tabs/account-detail',

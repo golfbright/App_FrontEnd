@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ZBarOptions, ZBar } from '@ionic-native/zbar/ngx';
+import { Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-qrcode',
@@ -13,18 +15,21 @@ scannedCode = null;
 optionZbar:any;
 scannedOutput:any;
 
-  constructor(private zbarPlugin: ZBar)
+  constructor(private platform: Platform,private route: Router,private routes: ActivatedRoute,private zbarPlugin: ZBar)
   {
     this.optionZbar = {
       flash: 'off',
       drawSight: false
     }
+    this.routes.params.subscribe((params: Params) => this.qrData = params['dataFormParam']);
+    
    }
 
   ngOnInit() {
+    this.createdCode = this.qrData;
   }
   createQRCode(){
-    this.createdCode = this.qrData;
+   
   }
   qrCodeScanner(){
     this.zbarPlugin.scan(this.optionZbar)

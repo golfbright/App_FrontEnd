@@ -20,13 +20,17 @@ export class LoginPage implements OnInit {
     private router: Router,
     private loadingController: LoadingController,
     private accountService: AccountService
-  ) {}
+  ) {
+    
+
+  }
  
   ngOnInit() {
     this.credentials = this.fb.group({
       employeeNo: ['', [Validators.required]],
       password: ['', [Validators.required]],
     });
+    
   }
  
   async login() {
@@ -47,31 +51,9 @@ export class LoginPage implements OnInit {
           buttons: ['OK'],
         });
               
-               alert.present();
+        alert.present();
       }
-      
     });
-
-
-    // const loading = await this.loadingController.create();
-    // await loading.present();
-    
-    // this.authService.login(this.credentials.value).subscribe(
-    //   async (res) => {
-    //     await loading.dismiss();        
-    //     this.router.navigateByUrl('/tabs', { replaceUrl: true });
-    //   },
-    //   async (res) => {
-    //     await loading.dismiss();
-    //     const alert = await this.alertController.create({
-    //       header: 'Login failed',
-    //       message: 'รหัสพนักงานหรือรหัสผ่านไม่ถูกต้อง',
-    //       buttons: ['OK'],
-    //     });
- 
-    //     await alert.present();
-    //   }
-    // );
   }
  
   // Easy access for form fields

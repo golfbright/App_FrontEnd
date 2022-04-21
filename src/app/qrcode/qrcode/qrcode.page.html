@@ -1,20 +1,27 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>qrcode</ion-title>
+    <ion-buttons slot="start">
+      
+        
+      <ion-back-button>
+        <ion-icon name="close-outline"></ion-icon>
+      </ion-back-button>
+    
+  </ion-buttons>
+    <ion-title>Qr Code สำหรับเริ่มงาน</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  <ion-item>
-    <ion-input type="text" placeholder="My QR code" [(ngModel)]="qrData">
-    </ion-input>
-  </ion-item>
-<ion-button (click)="createQRCode()"><ion-icon name="qr-code-outline"></ion-icon></ion-button>
-<ion-row *ngIf="createQRCode">
-  <ngx-qrcode [value]="createdCode"></ngx-qrcode>
+  
+
+<ion-row class="ion-justify-content-center">
+  <ngx-qrcode  [value]="createdCode" [width]="250"></ngx-qrcode>
 </ion-row>
-<div id="container">
-  <ion-button (click)="qrCodeScanner()"><ion-icon name="scan-outline"></ion-icon></ion-button>
-  <p>{{scannedOutput}}</p>
-</div>
+
+<p class="titre"> นำ QR Code ให้พนักงานปล่อยรถแสกนเพื่อเริ่มงาน</p>
+
+
+
+
 </ion-content>
